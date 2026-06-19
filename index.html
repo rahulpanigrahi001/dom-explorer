@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Explorer: Interactive Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="light">
+
+    <header class="app-header">
+        <div class="header-container">
+            <h1>DOM Explorer <span>Task Manager</span></h1>
+            <button id="theme-toggle" class="btn-theme">Toggle Theme</button>
+        </div>
+    </header>
+
+    <main class="app-container">
+        <section class="control-panel">
+            <div class="card form-card">
+                <h2>Create New Task</h2>
+                <form id="task-form" autocomplete="off">
+                    <div class="form-group">
+                        <label for="task-title">Task Title</label>
+                        <input type="text" id="task-title" placeholder="What needs to be done?" required value="Default Task">
+                    </div>
+                    <div class="form-group">
+                        <label for="task-category">Category</label>
+                        <select id="task-category" required>
+                            <option value="" disabled>Choose a category</option>
+                            <option value="Work" selected>Work</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Health">Health</option>
+                        </select>
+                    </div>
+                    <button type="submit" id="add-task-btn" class="btn-primary">Add Task</button>
+                </form>
+            </div>
+
+            <div class="card stats-card">
+                <h2>Dashboard Status</h2>
+                <div class="stats-grid">
+                    <div class="stat-box pending">
+                        <span class="stat-count" id="pending-count">0</span>
+                        <span class="stat-label">Pending</span>
+                    </div>
+                    <div class="stat-box completed">
+                        <span class="stat-count" id="completed-count">0</span>
+                        <span class="stat-label">Completed</span>
+                    </div>
+                </div>
+                <button id="clear-all-btn" class="btn-danger">Clear All Tasks</button>
+            </div>
+        </section>
+
+        <section class="task-board card">
+            <h2>Your Active Tasks</h2>
+            <div id="task-container" class="task-list"></div>
+        </section>
+
+        <section class="arena-section card">
+            <h2>Event Propagation Arena</h2>
+            <p class="section-desc">Click the child button to trigger and inspect Bubbling vs Capturing in your browser console.</p>
+            <div id="grandparent" class="zone grandparent-zone">
+                <span class="zone-label">Grandparent Zone</span>
+                <div id="parent" class="zone parent-zone">
+                    <span class="zone-label">Parent Zone</span>
+                    <button id="child-button" class="btn-child">Trigger Event (Child)</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="pipeline-section card">
+            <h2>Browser Rendering Pipeline Flow</h2>
+            <div class="pipeline-flow">
+                <div class="flow-step">
+                    <div class="step-badge">1</div>
+                    <h3>HTML Markup</h3>
+                    <p>Raw bytes received and translated into tokens.</p>
+                </div>
+                <div class="flow-connector">➔</div>
+                <div class="flow-step">
+                    <div class="step-badge">2</div>
+                    <h3>DOM Tree</h3>
+                    <p>Tokens mapped into structural nodes objects in memory.</p>
+                </div>
+                <div class="flow-connector">➔</div>
+                <div class="flow-step">
+                    <div class="step-badge">3</div>
+                    <h3>CSSOM Tree</h3>
+                    <p>Styles sheet selectors targeted into style rule maps.</p>
+                </div>
+                <div class="flow-connector">➔</div>
+                <div class="flow-step">
+                    <div class="step-badge">4</div>
+                    <h3>Render Tree</h3>
+                    <p>DOM + CSSOM calculation matching layout elements.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
